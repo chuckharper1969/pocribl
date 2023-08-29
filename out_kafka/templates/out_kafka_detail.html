@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header  text-bg-dark">
+      {{ object.output_id }}
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">
+        <strong>ID: </strong>{{ object.id }}</p>
+        
+      <p class="card-text">
+        <strong>Broker: </strong>{{ object.broker }}</p>
+        
+        <p class="card-text">
+        <strong>Topic: </strong>{{ object.topic }}
+        </p>
+        
+        <p class="card-text">
+        <strong>Message: </strong>{{ object.message }}</p>
+        
+        <p class="card-text">
+        <strong>Status: </strong>{{ object.status }}</p>
+        
+        <p class="card-text">
+        <strong>Create At: </strong>{{ object.created_at }}</p>
+
+        <p class="card-text">
+          <strong>Modified At: </strong>{{ object.modified_at }}</p>
+        
+        <p class="card-text">
+          <strong>Owner: </strong>{{ object.owner }}</p>
+        
+    </div>
+  </div>
+
+  <br/>
+  <a href="{% url 'out_kafka_list' %}" class="btn btn-secondary">Back</a>
+  <a href="{% url 'out_kafka_update' object.id %}" class="btn btn-warning">Update</a>
+  {% if object.status != 3 %}
+    <a href="{% url 'out_kafka_status' object.id 3 %}" class="btn btn-warning">Disable</a>
+  {% else %}
+    <a href="{% url 'out_kafka_status' object.id 0 %}" class="btn btn-warning">Enable</a>
+  {% endif %}
+  <a href="{% url 'out_kafka_delete' object.id %}" class="btn btn-danger">Delete</a>
+
+{% endblock %}

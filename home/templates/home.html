@@ -5,6 +5,7 @@
 {% if user.is_authenticated %}
     <a href="{% url 'in_syslog_list' %}">Syslog Inputs</a><br/>
     <a href="{% url 'in_splunk_hec_list' %}">Splunk HEC Inputs</a><br/>
+    <a href="{% url 'out_kafka_list' %}">Kafka Outputs</a><br/>
 {% else %}
     Login to access portals
 {% endif %}

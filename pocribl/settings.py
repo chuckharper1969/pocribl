@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'in_syslog',
     'in_splunk_hec',
+    'out_kafka',
 ]
 
 REST_FRAMEWORK = {

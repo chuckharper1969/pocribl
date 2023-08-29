@@ -20,4 +20,7 @@ urlpatterns = [
     path('api/v1/in_splunk_hec/', include('in_splunk_hec.api_urls')),
     path('in_splunk_hec/', include('in_splunk_hec.urls')),
 
+    path('api/v1/out_kafka/', include('out_kafka.api_urls')),
+    path('out_kafka/', include('out_kafka.urls')),
+
 ]

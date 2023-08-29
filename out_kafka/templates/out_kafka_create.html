@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="card">
+        <div class="card-header  text-bg-dark">
+            Add Kafka Output
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{% url 'out_kafka_create' %}">
+            {% csrf_token %}
+          
+            {{ form.as_p }}
+          
+          <br/>
+            <button type="submit" class="btn btn-success btn-sm">Add Output</button>
+             <a href="{% url 'out_kafka_list' %}" class="btn btn-secondary">Back</a>
+          
+          </form>
+        </div>
+    </div>
+{% endif %}
+    
+{% endblock %}
