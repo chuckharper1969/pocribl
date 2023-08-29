@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header  text-bg-dark">
+      {{ object.input_id }}
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">
+        <strong>ID: </strong>{{ object.id }}</p>
+        
+      <p class="card-text">
+        <strong>Token: </strong>{{ object.token }}</p>
+        
+        <p class="card-text">
+        <strong>Description: </strong>{{ object.description }}
+        </p>
+
+        <p class="card-text">
+          <strong>Index: </strong>{{ object.index }}
+        </p>
+
+        <p class="card-text">
+          <strong>Sourcetype: </strong>{{ object.sourcetype }}
+        </p>
+        
+        <p class="card-text">
+        <strong>Message: </strong>{{ object.message }}</p>
+        
+        <p class="card-text">
+        <strong>Status: </strong>{{ object.status }}</p>
+        
+        <p class="card-text">
+        <strong>Create At: </strong>{{ object.created_at }}</p>
+
+        <p class="card-text">
+          <strong>Modified At: </strong>{{ object.modified_at }}</p>
+        
+        <p class="card-text">
+          <strong>Owner: </strong>{{ object.owner }}</p>
+        
+    </div>
+  </div>
+
+  <br/>
+  <a href="{% url 'in_splunk_hec_list' %}" class="btn btn-secondary">Back</a>
+  <a href="{% url 'in_splunk_hec_update' object.id %}" class="btn btn-warning">Update</a>
+  {% if object.status != 3 %}
+    <a href="{% url 'in_splunk_hec_status' object.id 3 %}" class="btn btn-warning">Disable</a>
+  {% else %}
+    <a href="{% url 'in_splunk_hec_status' object.id 0 %}" class="btn btn-warning">Enable</a>
+  {% endif %}
+  <a href="{% url 'in_splunk_hec_delete' object.id %}" class="btn btn-danger">Delete</a>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="card">
+        <div class="card-header  text-bg-dark">
+            {{ object }}
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{% url 'in_syslog_update' object.id %}">
+            {% csrf_token %}
+          
+            {{ form.as_p }}
+          
+          <br/>
+            <button type="submit" class="btn btn-success btn-sm">Update Input</button>
+			<a href="{% url 'in_syslog_detail' object.id %}" class="btn btn-secondary">Back</a>
+          
+          </form>
+        </div>
+    </div>
+{% endif %}
+    
+{% endblock %}
